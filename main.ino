@@ -55,8 +55,13 @@ void loop(){
     while (central.connected()){
       LoadCell.update();
       int result = LoadCell.getData();
+
+      int percentage = map(result,5.2,11,0,100);
+      percentage = max(percentage,5.2);
+      
       gaslevelChar.writeValue(result);
-      Serial.println(LoadCell.getData());
+      percentChar.writeValue(percentage);
+      Serial.println(percentage);
       
       delay(200);
     }
